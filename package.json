@@ -13,8 +13,7 @@
   },
   "files": [
     "bin/", "src/", "examples/", "docs/", "README.md", "SECURITY.md", "LICENSE",
-    "DEVELOPMENT_REPORT.md", "TEST_REPORT.md", "VALIDATION_REPORT.md", "RELEASE_CHECKLIST.md",
-    "MCP_CONNECTOR_DEV_GUIDE.md", ".env.example", "Dockerfile", "docker-compose.yml"
+    "MCP_CONNECTOR_DEV_GUIDE.md", ".env.example"
   ],
   "scripts": {
     "serve": "node bin/server.mjs",
