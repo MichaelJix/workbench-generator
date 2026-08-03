@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Workbench Generator</title><link rel="stylesheet" href="/app.css">
+</head>
+<body>
+  <main>
+    <h1>Workbench Generator</h1>
+    <section id="auth" class="card">
+      <h2>登录或初始化</h2>
+      <div class="row"><input id="username" autocomplete="username" placeholder="用户名"><input id="password" type="password" autocomplete="current-password" placeholder="密码（至少 12 位）"></div>
+      <button id="login">登录</button><button id="bootstrap" class="secondary">首次初始化管理员</button>
+      <details><summary>使用现有 API token</summary><input id="token" type="password" placeholder="Bearer token"><button id="save-token">用于当前标签页</button></details>
+    </section>
+    <section class="card">
+      <h2>创建工作台</h2>
+      <textarea id="prompt" placeholder="例如：做一个 GitHub 仓库运营看板"></textarea>
+      <button id="start">开始访谈</button>
+      <div id="questions"></div>
+    </section>
+    <section class="card">
+      <h2>工作台</h2><button id="refresh">刷新</button><div id="workbenches"></div>
+    </section>
+    <section id="editor" class="card hidden">
+      <h2>预览与版本编辑</h2><div id="preview"></div>
+      <label>Workbench Spec<textarea id="spec-editor" spellcheck="false"></textarea></label>
+      <input id="revision-note" placeholder="版本说明"><button id="save-spec">保存为新版本</button>
+    </section>
+    <pre id="status"></pre>
+  </main><script type="module" src="/app.js"></script>
+</body></html>

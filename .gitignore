@@ -1,0 +1,19 @@
+node_modules/
+dist/
+.DS_Store
+__MACOSX/
+.review-tmp/
+.test-tmp-*
+*.tgz
+*.log
+.env
+.env.*
+!.env.example
+data/
+*.db
+*.db-shm
+*.db-wal
+# 本地记忆与编辑器/IDE 产物，不进版本库
+.codebuddy/
+.vscode/
+.idea/

@@ -1,0 +1,37 @@
+{
+  "specVersion": 1,
+  "name": "GitHub Repo 看板",
+  "slug": "github-repo",
+  "theme": { "brand": "#181717" },
+  "connector": {
+    "type": "rest-apikey",
+    "baseUrl": "https://api.github.com",
+    "auth": { "mode": "bearer", "env": "GITHUB_TOKEN", "header": "Authorization" },
+    "headers": { "Accept": "application/vnd.github+json", "User-Agent": "workbench" },
+    "endpoints": [
+      { "id": "repo", "path": "/repos/{owner}/{repo}", "method": "GET" },
+      { "id": "traffic", "path": "/repos/{owner}/{repo}/traffic/views", "method": "GET" }
+    ]
+  },
+  "params": { "owner": "facebook", "repo": "react" },
+  "pages": [
+    {
+      "id": "home",
+      "title": "概览",
+      "widgets": [
+        { "type": "kpi", "label": "Stars", "endpoint": "repo", "field": "stargazers_count" },
+        { "type": "kpi", "label": "Forks", "endpoint": "repo", "field": "forks_count" },
+        { "type": "kpi", "label": "Open Issues", "endpoint": "repo", "field": "open_issues_count" },
+        { "type": "kpi", "label": "Watchers", "endpoint": "repo", "field": "subscribers_count" }
+      ]
+    },
+    {
+      "id": "traffic",
+      "title": "访问趋势",
+      "widgets": [
+        { "type": "lineChart", "title": "近 14 天浏览量", "endpoint": "traffic", "arrayField": "views", "xField": "timestamp", "series": [{ "name": "浏览量", "field": "count" }] },
+        { "type": "table", "title": "明细", "endpoint": "traffic", "arrayField": "views", "columns": [{ "title": "日期", "field": "timestamp" }, { "title": "浏览", "field": "count" }, { "title": "独立访客", "field": "uniques" }] }
+      ]
+    }
+  ]
+}

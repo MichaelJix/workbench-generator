@@ -1,0 +1,15 @@
+node_modules/
+test/
+.github/
+.codebuddy/
+.review-tmp/
+.test-tmp-*
+.DS_Store
+__MACOSX/
+*.tgz
+*.log
+.env*
+data/
+*.db
+*.db-shm
+*.db-wal

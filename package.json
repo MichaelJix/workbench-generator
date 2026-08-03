@@ -1,0 +1,37 @@
+{
+  "name": "workbench-generator",
+  "version": "1.0.0",
+  "description": "自托管的 MCP 工作台生成平台：多用户、持久化访谈、版本管理、审批式写操作与远程 MCP。",
+  "type": "module",
+  "engines": { "node": ">=24" },
+  "bin": {
+    "workbench-generator": "bin/cli.mjs",
+    "workbench-server": "bin/server.mjs",
+    "create-workbench": "bin/create-workbench.mjs",
+    "workbench-interview": "bin/interview.mjs",
+    "workbench-mcp": "src/mcp/server.mjs"
+  },
+  "files": [
+    "bin/", "src/", "examples/", "docs/", "README.md", "SECURITY.md", "LICENSE",
+    "DEVELOPMENT_REPORT.md", "TEST_REPORT.md", "VALIDATION_REPORT.md", "RELEASE_CHECKLIST.md",
+    "MCP_CONNECTOR_DEV_GUIDE.md", ".env.example", "Dockerfile", "docker-compose.yml"
+  ],
+  "scripts": {
+    "serve": "node bin/server.mjs",
+    "mcp": "node bin/cli.mjs mcp",
+    "test:unit": "node --test test/unit/*.test.js",
+    "test:integration": "node --test test/integration/*.test.js",
+    "test:global": "node --test test/global/*.test.js",
+    "test:legacy": "node --test test/*.test.js",
+    "test": "npm run test:unit && npm run test:integration && npm run test:global && npm run test:legacy",
+    "check": "node --check bin/server.mjs && node --check src/server/http-server.js && node --check src/mcp/factory.js",
+    "pack:check": "npm pack --dry-run"
+  },
+  "keywords": ["mcp", "model-context-protocol", "self-hosted", "dashboard", "workbench", "sqlite"],
+  "license": "MIT",
+  "publishConfig": { "access": "public" },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "zod": "^3.25.0"
+  }
+}

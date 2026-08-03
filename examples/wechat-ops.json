@@ -1,0 +1,27 @@
+{
+  "specVersion": 1,
+  "name": "公众号运营工作台",
+  "slug": "wechat-ops",
+  "theme": { "brand": "#07C160" },
+  "connector": {
+    "type": "wechat-mp",
+    "appidEnv": "WECHAT_APPID",
+    "secretEnv": "WECHAT_SECRET",
+    "account": "Michael"
+  },
+  "pages": [
+    {
+      "id": "home",
+      "title": "概览",
+      "widgets": [
+        { "type": "kpi", "label": "累计粉丝", "endpoint": "overview", "field": "kpis.cumulate" },
+        { "type": "kpi", "label": "今日净增", "endpoint": "overview", "field": "kpis.netToday" },
+        { "type": "kpi", "label": "新增关注", "endpoint": "overview", "field": "kpis.newUser" },
+        { "type": "kpi", "label": "分享次数", "endpoint": "overview", "field": "kpis.shares" },
+        { "type": "lineChart", "title": "粉丝与阅读趋势", "endpoint": "overview", "mode": "parallel", "parallel": { "base": "chart", "labels": "labels", "series": { "read": "read", "follow": "follow" } } },
+        { "type": "list", "title": "爆款文章 TOP", "endpoint": "overview", "arrayField": "top", "titleField": "title", "subField": "reads" },
+        { "type": "table", "title": "渠道来源", "endpoint": "overview", "arrayField": "channels", "columns": [{ "title": "渠道", "field": "name" }, { "title": "占比(%)", "field": "percent" }] }
+      ]
+    }
+  ]
+}

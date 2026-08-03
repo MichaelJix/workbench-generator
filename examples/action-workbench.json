@@ -1,0 +1,47 @@
+{
+  "specVersion": 1,
+  "name": "工单管理工作台",
+  "slug": "ticket-admin",
+  "theme": { "brand": "#2F80ED" },
+  "connector": {
+    "type": "rest-apikey",
+    "baseUrl": "https://api.example.com/v1",
+    "auth": { "mode": "bearer", "env": "TICKET_API_TOKEN", "header": "Authorization" },
+    "headers": { "Accept": "application/json", "User-Agent": "workbench-generator" },
+    "endpoints": [
+      { "id": "tickets", "path": "/tickets", "method": "GET" }
+    ],
+    "actions": [
+      {
+        "id": "close_ticket",
+        "label": "关闭工单",
+        "path": "/tickets/{id}/close",
+        "method": "POST",
+        "confirmation": "确认关闭此工单？该操作会写入外部系统。",
+        "input": [
+          { "name": "id", "label": "工单 ID", "type": "string", "required": true },
+          { "name": "reason", "label": "关闭原因", "type": "string", "required": true }
+        ]
+      }
+    ]
+  },
+  "pages": [
+    {
+      "id": "home",
+      "title": "工单",
+      "widgets": [
+        {
+          "type": "table",
+          "title": "待处理工单",
+          "endpoint": "tickets",
+          "arrayField": "items",
+          "columns": [
+            { "title": "ID", "field": "id" },
+            { "title": "标题", "field": "title" },
+            { "title": "状态", "field": "status" }
+          ]
+        }
+      ]
+    }
+  ]
+}
